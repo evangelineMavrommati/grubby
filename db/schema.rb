@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_05_03_213538) do
+ActiveRecord::Schema[7.0].define(version: 2024_05_03_222904) do
   create_table "recipes", force: :cascade do |t|
     t.string "name"
     t.integer "calories"
     t.integer "protein"
+    t.integer "carbs"
     t.integer "fat"
-    t.integer "carbohydrates"
     t.string "meal"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
