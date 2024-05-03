@@ -1,0 +1,34 @@
+<div class="flex flex-col gap-10">
+  <div class="text-3xl font-semibold">New Recipe</div>
+  <div>
+    <%= form_with model: @recipe, html: { class: "flex flex-wrap gap-4" } do |f| %>
+      <div class="flex flex-col">
+        <%= f.label "Name"%>
+        <%= f.text_field :name, class: "form-input rounded" %>
+      </div>
+      <div class="flex flex-col">
+        <%= f.label "Meal" %>
+        <%= f.select :meal, ["Breakfast", "Lunch", "Dinner", "Snack"], {}, class: "form-select rounded" %>
+      </div>
+      <div class="flex flex-col">
+        <%= f.label "Calories" %>
+        <%= f.number_field :calories, class: "form-input rounded" %>
+      </div>
+      <div class="flex flex-col">
+        <%= f.label "Protein" %>
+        <%= f.number_field :protein, class: "form-input rounded" %>
+      </div>
+      <div class="flex flex-col">
+        <%= f.label "Carbs" %>
+        <%= f.number_field :carbs, class: "form-input rounded" %>
+      </div>
+      <div class="flex flex-col">
+        <%= f.label "Fat" %>
+        <%= f.number_field :fat, class: "form-input rounded" %>
+      </div>
+      <div class="place-self-end">
+        <%= f.submit :Submit, class: "h-10 px-6 font-semibold rounded-md bg-blue-800 text-white" %>
+      </div>
+    <% end %>
+  </div>
+</div>
