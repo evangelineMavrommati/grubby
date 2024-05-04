@@ -3,33 +3,38 @@
 
   <% if flash[:notice] %>
     <div class="text-green-700"><%= flash[:notice] %></div>
-  <% else %>
-    <div class="text-red-700"><%= flash[:error] %></div>
   <% end %>
 
-  <table class="table-auto">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Meal</th>
-        <th>Calories</th>
-        <th>Protein</th>
-        <th>Carbs</th>
-        <th>Fat</th>  
-      </tr>
-    </thead>
-    <tbody>
-      <% @recipes.each do |r| %>
-        <tr>
-          <td><%= r.name %></td>
-          <td><%= r.meal %></td>
-          <td><%= r.calories %></td>
-          <td><%= r.protein %></td>
-          <td><%= r.carbs %></td>
-          <td><%= r.fat %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-
+  <div class="flex flex-col">
+    <div class="-m-1.5 overflow-x-auto">
+      <div class="p-1.5 min-w-full inline-block align-middle">
+        <div class="overflow-hidden">
+          <table class="min-w-full divide-y divide-gray-200">
+            <thead>
+              <tr>
+                <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Name</th>
+                <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Meal</th>
+                <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Calories</th>
+                <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Protein</th>
+                <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Carbs</th>
+                <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Fat</th>  
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200">
+              <% @recipes.each do |recipe| %>
+                <tr onClick="location.href='<%= recipe_path(recipe.id) %>'" class="hover:bg-gray-100 hover:cursor-pointer">
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800"><%= recipe.name %></td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800"><%= recipe.meal %></td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800"><%= recipe.calories %></td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800"><%= recipe.protein %></td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800"><%= recipe.carbs %></td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800"><%= recipe.fat %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

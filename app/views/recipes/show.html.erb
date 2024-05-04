@@ -1,0 +1,40 @@
+<div class="flex flex-col gap-10 basis-full">
+  <div class="text-3xl font-semiibold"><%= @recipe.name %></div>
+
+  <div class="grid grid-cols-6 gap-3">
+    <div class="bg-blue-100 space-y-3.5">
+      <div>
+        <div class="text-sm font-semibold">Meal</div>
+        <div class="text-sm"><%= @recipe.meal %></div>
+      </div>
+
+      <div>
+        <div class="text-sm font-semibold">Calories</div>
+        <div class="text-sm"><%= @recipe.calories %></div>
+      </div>
+
+      <div>
+        <div class="text-sm font-semibold">Protein</div>
+        <div class="text-sm"><%= @recipe.protein %></div>
+      </div>
+
+      <div>
+        <div class="text-sm font-semibold">Carbs</div>
+        <div class="text-sm"><%= @recipe.carbs %></div>
+      </div>
+
+      <div>
+        <div class="text-sm font-semibold">Fat</div>
+        <div class="text-sm"><%= @recipe.fat %></div>
+      </div>
+    </div>
+    <div class="bg-red-100 text-l font-semibold col-span-4">Ingredients</div>
+  </div>
+
+  <div class="bg-green-100">
+    <div class="text-2xl font-semibold">Instructions</div>
+    <div class="text-sm"><%= @recipe.instructions %></div>
+  </div>
+
+</div>
+

@@ -1,5 +1,8 @@
 <div class="flex flex-col gap-10">
   <div class="text-3xl font-semibold">New Recipe</div>
+  <% if flash[:error] %>
+    <div class="text-red-700"><%= flash[:error] %></div>
+  <% end %>
   <div>
     <%= form_with model: @recipe, url: recipes_path, method: :post, html: { class: "flex flex-wrap gap-4" } do |f| %>
       <div class="flex flex-col">

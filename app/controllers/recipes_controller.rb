@@ -4,6 +4,7 @@ class RecipesController < ApplicationController
   end
 
   def show
+    @recipe = Recipe.find(params[:id])
   end
 
   def new
@@ -17,7 +18,7 @@ class RecipesController < ApplicationController
       redirect_to recipes_path
     else
       flash[:error] = "Recipe could not be created."
-      render new_recipe_path
+      redirect_to new_recipe_path
     end
   end
 
