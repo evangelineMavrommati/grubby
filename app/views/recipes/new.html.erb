@@ -29,10 +29,10 @@
         <%= f.label "Fat" %>
         <%= f.number_field :fat, class: "form-input rounded" %>
       </div>
-      <div class="flex flex-col">
+      <div class="flex flex-col grow">
         <%= f.fields_for :ingredients, Ingredient.new do |ff| %>
-          <%= ff.label "Name" %>
-          <%= ff.select :name, [["Chicken", "chicken"], ["Onion", "onion"]], {}, multiple: true, class: "form-multiselect rounded" %>
+          <%= ff.label "Ingredients" %>
+          <%= ff.select :name, Ingredient.all.pluck(:name), {}, {multiple: true, data: {controller: 'slim'}} %>
         <% end %>
       </div>
       <div class="flex flex-col">
