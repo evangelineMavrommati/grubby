@@ -35,6 +35,10 @@
           <%= ff.select :name, [["Chicken", "chicken"], ["Onion", "onion"]], {}, multiple: true, class: "form-multiselect rounded" %>
         <% end %>
       </div>
+      <div class="flex flex-col">
+        <%= f.label "Instructions" %>
+        <%= f.rich_text_area :instructions, class: "form-textarea rounded" %>
+      </div>
       <div class="place-self-end">
         <%= f.submit :Submit, class: "h-10 px-6 font-semibold rounded-md bg-blue-800 text-white" %>
       </div>
