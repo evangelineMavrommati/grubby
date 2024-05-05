@@ -1,24 +1,18 @@
-# README
+# Grubby
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Features/Use Cases
+- Add/Edit/Remove recipe(s) with ingredients
+- Create grocery lists by adding Recipes (compile ingredients from recipes)
+- Log calories & macros
 
-Things you may want to cover:
+## Startup
 
-* Ruby version
+ruby version 3.3.0  
+rails version 7.0.8.1
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+bundle install
+bin/rails db:migrate
+bin/rails s
+bin/rails tailwindcss:watch
+```
