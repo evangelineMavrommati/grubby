@@ -19,8 +19,7 @@ class RecipesController < ApplicationController
       flash[:notice] = "Recipe created successfully."
       redirect_to recipes_path
     else
-      flash[:error] = "Recipe could not be created."
-      redirect_to new_recipe_path
+      render :new, status: :unprocessable_entity
     end
   end
 

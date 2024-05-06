@@ -5,6 +5,18 @@
   <% end %>
   <div>
     <%= form_with model: @recipe, url: recipes_path, method: :post, html: { class: "flex flex-wrap gap-4" } do |f| %>
+      <% if @recipe.errors.any? %>
+        <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3 basis-full">
+          <h2><%= pluralize(@recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
+
+          <ul>
+            <% @recipe.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
       <div class="flex flex-col">
         <%= f.label "Name"%>
         <%= f.text_field :name, class: "form-input rounded" %>
