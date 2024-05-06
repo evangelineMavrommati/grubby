@@ -3,6 +3,6 @@ class Recipe < ApplicationRecord
   accepts_nested_attributes_for :ingredients
   has_rich_text :instructions
 
-  validates_presence_of :name, :meal, :calories, :protein, :fat, :carbs
+  validates_presence_of :name, :calories
 
 end

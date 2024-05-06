@@ -1,5 +1,8 @@
 <div class="flex flex-col gap-10">
   <div class="text-3xl font-semibold">New Recipe</div>
+  
+  <hr class="border-blue-800">
+  
   <% if flash[:error] %>
     <div class="text-red-700"><%= flash[:error] %></div>
   <% end %>
