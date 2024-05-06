@@ -1,0 +1,30 @@
+<div class="flex flex-col gap-10">
+  <div class="text-3xl font-semibold">New Ingredient</div>
+  <hr class="border-blue-800">
+
+  <% if flash[:error] %>
+    <div class="text-red-700"><%= flash[:error] %></div>
+  <% end %>
+
+  <%= form_for @ingredient, html: { class: "flex flex-wrap gap-4" } do |f| %>
+    <% if @ingredient.errors.any? %>
+      <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3 basis-full">
+        <h2><%= pluralize(@ingredient.errors.count, "error") %> prohibited this ingredient from being saved:</h2>
+
+        <ul>
+          <% @ingredient.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="flex flex-col">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: "form-input rounded" %>
+    </div>
+    <div class="place-self-end">
+      <%= f.submit :Submit, class: "h-10 px-6 font-semibold rounded-md bg-blue-800 text-white" %>
+    </div>
+  <% end %>
+</div>
