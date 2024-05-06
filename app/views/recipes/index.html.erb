@@ -1,7 +1,7 @@
 <div class="flex flex-col gap-10">
   <div class="text-3xl font-semibold">Recipes</div>
 
-    <hr class="border-blue-800">
+  <hr class="border-blue-800">
 
   <% if flash[:notice] %>
     <div class="text-green-700"><%= flash[:notice] %></div>
@@ -12,7 +12,7 @@
       <div class="p-1.5 min-w-full inline-block align-middle">
         <div class="overflow-hidden">
           <table class="min-w-full divide-y divide-gray-200">
-            <thead>
+            <thead class="bg-gray-50">
               <tr>
                 <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Name</th>
                 <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Meal</th>
@@ -39,4 +39,6 @@
       </div>
     </div>
   </div>
+
+  <%= link_to "Create New Recipe", new_recipe_path, class: "w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-800 text-white" %>
 </div>
