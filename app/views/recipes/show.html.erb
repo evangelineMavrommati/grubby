@@ -2,7 +2,7 @@
   <div class="text-3xl font-semiibold"><%= @recipe.name %></div>
 
   <div class="grid grid-cols-6 gap-3">
-    <div class="bg-blue-100 space-y-3.5">
+    <div class="shadow-md rounded-lg space-y-3.5 pl-1.5 pb-2">
       <div>
         <div class="text-sm font-semibold">Meal</div>
         <div class="text-sm"><%= @recipe.meal %></div>
@@ -28,11 +28,18 @@
         <div class="text-sm"><%= @recipe.fat %></div>
       </div>
     </div>
-    <div class="bg-red-100 text-2xl font-semiibold col-span-4">Ingredients</div>
+    <div class="shadow-md rounded-lg text-2xl font-semiibold col-span-5">
+      <div class="text-2xl font-semiibold pb-5 pl-5">Ingredients</div>
+      <div class="text-sm flex flex-col content-start flex-wrap h-48">
+        <% @recipe.ingredients.each do |ingredient| %>
+          <div class="pl-5 py-1 w-2/5"><%= ingredient.name %></div>
+        <% end %>
+      </div>
+    </div>
   </div>
 
-  <div class="bg-green-100">
-    <div class="text-2xl font-semiibold">Instructions</div>
-    <div class="text-sm"><%= @recipe.instructions %></div>
+  <div class="shadow-md rounded-lg">
+    <div class="text-2xl font-semiibold pb-5 pl-5">Instructions</div>
+    <div class="text-sm pb-5 pl-5"><%= @recipe.instructions %></div>
   </div>
 </div>
