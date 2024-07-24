@@ -7,6 +7,7 @@ class Recipe < ApplicationRecord
   validates_presence_of :name, :calories
 
   def add_ingredients(ingredients_params)
+    return unless ingredients_params.present?
     ingredients_params.each do |ingredient|
       self.ingredients << Ingredient.find_or_create_by(name: ingredient)
     end

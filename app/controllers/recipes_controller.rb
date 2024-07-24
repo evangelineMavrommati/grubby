@@ -49,6 +49,6 @@ class RecipesController < ApplicationController
   end
 
   def ingredients_params
-    params.require(:recipe).dig(:ingredients_attributes, '0', 'name').reject{ |e| e.empty? }
+    params.require(:recipe).dig(:ingredients_attributes, '0', 'name')&.reject{ |e| e.empty? }
   end
 end
