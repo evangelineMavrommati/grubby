@@ -1,6 +1,4 @@
 class RecipesController < ApplicationController
-  include RecipesHelper
-
   def index
     @recipes = Recipe.all
   end
@@ -14,7 +12,9 @@ class RecipesController < ApplicationController
   end
   
   def create
-    @recipe = create_recipe_with_ingredients(recipe_params, ingredients_params)
+    @recipe = Recipe.new(recipe_params)
+    @recipe.add_ingredients(ingredients_params)
+
     if @recipe.save
       flash[:notice] = "Recipe created successfully."
       redirect_to recipes_path
@@ -28,6 +28,15 @@ class RecipesController < ApplicationController
   end
 
   def update
+    @recipe = Recipe.find(params[:id])
+    @recipe.update_ingredients(ingredients_params)
+
+    if @recipe.save
+      flash[:notice] = "Recipe updated successfully."
+      redirect_to recipe_path(@recipe.id)
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
@@ -40,6 +49,6 @@ class RecipesController < ApplicationController
   end
 
   def ingredients_params
-    params.require(:recipe).dig(:ingredients_attributes, '0', 'name').reject{ |e| e.empty? }
+    params.require(:recipe).dig(:ingredients_attributes, '0', 'name')&.reject{ |e| e.empty? }
   end
 end

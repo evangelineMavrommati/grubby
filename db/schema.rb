@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_05_06_005409) do
+ActiveRecord::Schema[7.0].define(version: 2024_05_06_175912) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -49,17 +49,17 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_06_005409) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "ingredient_recipes", force: :cascade do |t|
+    t.integer "recipe_id"
+    t.integer "ingredient_id"
+    t.index ["ingredient_id"], name: "index_ingredient_recipes_on_ingredient_id"
+    t.index ["recipe_id"], name: "index_ingredient_recipes_on_recipe_id"
+  end
+
   create_table "ingredients", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "ingredients_recipes", id: false, force: :cascade do |t|
-    t.integer "recipe_id"
-    t.integer "ingredient_id"
-    t.index ["ingredient_id"], name: "index_ingredients_recipes_on_ingredient_id"
-    t.index ["recipe_id"], name: "index_ingredients_recipes_on_recipe_id"
   end
 
   create_table "recipes", force: :cascade do |t|

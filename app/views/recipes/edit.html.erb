@@ -1,1 +1,62 @@
-<%= @recipe.name %>
+<div class="flex flex-col gap-10 basis-full">
+  <div class="flex flex-row justify-between">
+    <div class="text-3xl font-semiiibold"><%= @recipe.name %></div>
+    <%= link_to "New Recipe", new_recipe_path, class: "py-2 px-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-800 text-white" %>
+  </div>
+
+  <hr class="border-blue-800">
+
+  <div>
+    <%= form_with model: @recipe, method: :put, html: { class: "flex flex-wrap gap-4" } do |f| %>
+      <% if @recipe.errors.any? %>
+        <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3 basis-full">
+          <h2><%= pluralize(@recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
+
+          <ul>
+            <% @recipe.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="flex flex-col">
+        <%= f.label "Name"%>
+        <%= f.text_field :name, class: "form-input rounded" %>
+      </div>
+      <div class="flex flex-col">
+        <%= f.label "Meal" %>
+        <%= f.select :meal, ["Breakfast", "Lunch", "Dinner", "Snack"], {}, class: "form-select rounded" %>
+      </div>
+      <div class="flex flex-col">
+        <%= f.label "Calories" %>
+        <%= f.number_field :calories, class: "form-input rounded" %>
+      </div>
+      <div class="flex flex-col">
+        <%= f.label "Protein" %>
+        <%= f.number_field :protein, class: "form-input rounded" %>
+      </div>
+      <div class="flex flex-col">
+        <%= f.label "Carbs" %>
+        <%= f.number_field :carbs, class: "form-input rounded" %>
+      </div>
+      <div class="flex flex-col">
+        <%= f.label "Fat" %>
+        <%= f.number_field :fat, class: "form-input rounded" %>
+      </div>
+      <div class="flex flex-col grow">
+        <%= f.label "Ingredients" %>
+        <%= f.fields_for :ingredients, @recipe.ingredients.build do |ff| %>
+          <%= ff.select :name, Ingredient.pluck(:name), { selected: @recipe.ingredients.pluck(:name) }, { multiple: true, data: { controller: 'slim' } } %>
+        <% end %>
+      </div>
+      <div class="flex flex-col">
+        <%= f.label "Instructions" %>
+        <%= f.rich_text_area :instructions, class: "form-textarea rounded" %>
+      </div>
+      <div class="place-self-end">
+        <%= f.submit :Save, class: "h-10 px-6 font-semibold rounded-md bg-blue-800 text-white" %>
+      </div>
+    <% end %>
+  </div>
+</div>

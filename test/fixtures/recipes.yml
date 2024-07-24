@@ -1,17 +1,17 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
+  name: Chicken Adobo
   calories: 1
   protein: 1
   fat: 1
-  carbohydrates: 1
-  meal: MyString
+  carbs: 1
+  meal: Dinner
 
 two:
-  name: MyString
+  name: BBQ Chicken
   calories: 1
   protein: 1
   fat: 1
-  carbohydrates: 1
-  meal: MyString
+  carbs: 1
+  meal: Dinner
